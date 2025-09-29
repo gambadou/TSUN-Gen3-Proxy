@@ -175,7 +175,13 @@ mqtt.block = []
     with open(config_path, 'w') as f:
         f.write(config_content)
     
-    bashio.log.info(f"Configuration file generated: {config_path}")
+    print(f"Configuration file generated: {config_path}")
+    return True
 
 if __name__ == '__main__':
-    generate_config()
+    try:
+        generate_config()
+        print("Configuration générée avec succès")
+    except Exception as e:
+        print(f"Erreur lors de la génération de configuration: {e}")
+        sys.exit(1)
