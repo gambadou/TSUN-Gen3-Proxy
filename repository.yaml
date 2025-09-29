@@ -1,0 +1,5 @@
+# Repository d'add-ons Home Assistant pour TSUN Gen3 Proxy
+name: "TSUN Gen3 Proxy Add-ons"
+description: "Add-ons Home Assistant pour les onduleurs et batteries TSUN"
+url: "https://github.com/votre-username/tsun-gen3-proxy-addon"
+maintainer: "Votre Nom <votre.email@example.com>"
