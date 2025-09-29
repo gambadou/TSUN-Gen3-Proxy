@@ -9,4 +9,3 @@ pyserial>=3.5
 click>=8.1.0
 coloredlogs>=15.0.1
 PyYAML>=6.0.2
-bashio>=0.16.0
