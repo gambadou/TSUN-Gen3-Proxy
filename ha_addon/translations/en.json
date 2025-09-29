@@ -1,0 +1,6 @@
+{
+  "name": "TSUN Gen3 Proxy",
+  "description": "Proxy for TSUN third generation inverters and batteries",
+  "keywords": ["tsun", "inverter", "solar", "mqtt", "energy"],
+  "url": "https://github.com/s-allius/tsun-gen3-proxy"
+}

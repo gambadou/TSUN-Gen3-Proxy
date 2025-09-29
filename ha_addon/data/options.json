@@ -1,0 +1,22 @@
+{
+  "mqtt_host": "core-mosquitto",
+  "mqtt_port": 1883,
+  "mqtt_user": "",
+  "mqtt_password": "",
+  "tsun_cloud_enabled": true,
+  "solarman_cloud_enabled": true,
+  "log_level": "info",
+  "inverters": [
+    {
+      "serial": "R17000000000001",
+      "node_id": "inv_1",
+      "suggested_area": "roof",
+      "modbus_polling": false,
+      "pv1_type": "RSM40-8-395M",
+      "pv1_manufacturer": "Risen",
+      "pv2_type": "RSM40-8-395M",
+      "pv2_manufacturer": "Risen"
+    }
+  ],
+  "batteries": []
+}
