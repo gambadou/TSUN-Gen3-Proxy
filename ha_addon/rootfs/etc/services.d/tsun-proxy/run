@@ -1,0 +1,24 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# TSUN Gen3 Proxy Add-on
+# Runs the TSUN Gen3 Proxy
+# ==============================================================================
+
+# Wait for services to be available
+bashio::log.info "Starting TSUN Gen3 Proxy Add-on..."
+
+# Create directories
+mkdir -p /config/tsun-proxy
+mkdir -p /share/tsun-proxy/logs
+
+# Generate config.toml from Home Assistant options
+python3 /app/generate_config.py
+
+# Set proper permissions
+chown -R root:root /config/tsun-proxy
+chown -R root:root /share/tsun-proxy
+
+# Start the proxy
+bashio::log.info "Starting TSUN Gen3 Proxy..."
+cd /app
+exec python3 -m app.proxy
