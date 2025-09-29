@@ -40,9 +40,15 @@ echo "✅ Test 3: Test de génération de configuration..."
 mkdir -p /tmp/test-config /tmp/test-data
 echo '{"mqtt_host": "test-mqtt", "mqtt_port": 1883, "inverters": [], "batteries": []}' > /tmp/test-data/options.json
 
-# Simulation avec des données de test
-export CONFIG_PATH="/tmp/test-config/config.toml"
-cd /tmp && python3 /app/ha_addon/generate_config.py
+# Modifier temporairement le chemin de données pour les tests
+sed -i 's|/data/options.json|/tmp/test-data/options.json|g' /app/ha_addon/generate_config.py
+sed -i 's|/config/tsun-proxy/config.toml|/tmp/test-config/config.toml|g' /app/ha_addon/generate_config.py
+
+cd /app/ha_addon && python3 generate_config.py
+
+# Restaurer les chemins originaux
+sed -i 's|/tmp/test-data/options.json|/data/options.json|g' /app/ha_addon/generate_config.py  
+sed -i 's|/tmp/test-config/config.toml|/config/tsun-proxy/config.toml|g' /app/ha_addon/generate_config.py
 
 if [ -f "/tmp/test-config/config.toml" ]; then
     echo "  ✅ Configuration générée avec succès"
