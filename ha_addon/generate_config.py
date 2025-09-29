@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/usr/bin/env python3
 # ==============================================================================
 # TSUN Gen3 Proxy Add-on - Configuration Generator
 # Generates config.toml from Home Assistant add-on options
@@ -6,22 +6,46 @@
 
 import json
 import os
+import sys
 from pathlib import Path
-import bashio
+
+def get_addon_options():
+    """Récupère les options de l'add-on depuis le fichier d'options HA"""
+    options_file = '/data/options.json'
+    if os.path.exists(options_file):
+        with open(options_file, 'r') as f:
+            return json.load(f)
+    
+    # Options par défaut si fichier non trouvé
+    return {
+        'mqtt_host': 'core-mosquitto',
+        'mqtt_port': 1883,
+        'mqtt_user': '',
+        'mqtt_password': '',
+        'tsun_cloud_enabled': True,
+        'solarman_cloud_enabled': True,
+        'log_level': 'info',
+        'inverters': [],
+        'batteries': []
+    }
 
 def generate_config():
     """Generate config.toml from Home Assistant add-on options."""
     
     # Get options from Home Assistant
-    mqtt_host = bashio.config('mqtt_host')
-    mqtt_port = bashio.config('mqtt_port')
-    mqtt_user = bashio.config('mqtt_user')
-    mqtt_password = bashio.config('mqtt_password')
-    tsun_cloud_enabled = bashio.config('tsun_cloud_enabled')
-    solarman_cloud_enabled = bashio.config('solarman_cloud_enabled', True)
-    log_level = bashio.config('log_level', 'info')
-    inverters = bashio.config('inverters', [])
-    batteries = bashio.config('batteries', [])
+    options = get_addon_options()
+    
+    mqtt_host = options.get('mqtt_host', 'core-mosquitto')
+    mqtt_port = options.get('mqtt_port', 1883)
+    mqtt_user = options.get('mqtt_user', '')
+    mqtt_password = options.get('mqtt_password', '')
+    tsun_cloud_enabled = options.get('tsun_cloud_enabled', True)
+    solarman_cloud_enabled = options.get('solarman_cloud_enabled', True)
+    log_level = options.get('log_level', 'info')
+    inverters = options.get('inverters', [])
+    batteries = options.get('batteries', [])
+    
+    print(f"Génération de la configuration avec MQTT: {mqtt_host}:{mqtt_port}")
     
     # Prepare config content
     config_content = f"""##########################################################################################
