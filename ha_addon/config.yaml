@@ -1,0 +1,72 @@
+name: TSUN Gen3 Proxy
+version: "1.0.0"
+slug: tsun_gen3_proxy
+description: TSUN third generation inverters and batteries proxy for MQTT/Home Assistant integration
+url: https://github.com/s-allius/tsun-gen3-proxy
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: services
+boot: auto
+init: false
+map:
+  - config:rw
+  - ssl
+ports:
+  - "5005:5005/tcp"
+  - "10000:10000/tcp"
+  - "8080:8080/tcp"
+ports_description:
+  "5005": GEN3 inverter connection port
+  "10000": GEN3PLUS inverter connection port  
+  "8080": Web UI port
+options:
+  mqtt_host: core-mosquitto
+  mqtt_port: 1883
+  mqtt_user: ""
+  mqtt_password: ""
+  tsun_cloud_enabled: true
+  log_level: info
+  inverters: []
+  batteries: []
+schema:
+  mqtt_host: str
+  mqtt_port: port
+  mqtt_user: str?
+  mqtt_password: password?
+  tsun_cloud_enabled: bool
+  solarman_cloud_enabled: bool?
+  log_level: list(trace|debug|info|warning|error|fatal)?
+  inverters:
+    - serial: str
+      node_id: str
+      monitor_sn: int?
+      suggested_area: str?
+      modbus_polling: bool?
+      client_mode_host: str?
+      client_mode_port: int?
+      pv1_type: str?
+      pv1_manufacturer: str?
+      pv2_type: str?
+      pv2_manufacturer: str?
+      pv3_type: str?
+      pv3_manufacturer: str?
+      pv4_type: str?
+      pv4_manufacturer: str?
+  batteries:
+    - serial: str
+      node_id: str
+      monitor_sn: int
+      suggested_area: str?
+      modbus_polling: bool?
+      client_mode_host: str?
+      client_mode_port: int?
+      pv1_type: str?
+      pv1_manufacturer: str?
+      pv2_type: str?
+      pv2_manufacturer: str?
+image: ghcr.io/your-username/tsun-gen3-proxy-addon
+stage: stable
