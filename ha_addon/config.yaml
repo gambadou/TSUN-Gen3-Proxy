@@ -68,5 +68,5 @@ schema:
       pv1_manufacturer: str?
       pv2_type: str?
       pv2_manufacturer: str?
-image: ghcr.io/your-username/tsun-gen3-proxy-addon
+image: ghcr.io/gambadou/tsun-gen3-proxy-addon
 stage: stable
