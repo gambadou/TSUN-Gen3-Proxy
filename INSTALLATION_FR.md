@@ -16,7 +16,7 @@ Ou manuellement :
 1. Accédez à **Supervisor** → **Add-on Store**
 2. Cliquez sur ⋮ (menu) en haut à droite
 3. Sélectionnez **Repositories**
-4. Ajoutez : `https://github.com/votre-username/tsun-gen3-proxy-addon`
+4. Ajoutez : `https://github.com/gambadou/tsun-gen3-proxy-addon`
 
 ### 2. Installation de l'Add-on
 
