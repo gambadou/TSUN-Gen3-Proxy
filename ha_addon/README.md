@@ -14,7 +14,7 @@ Le TSUN Gen3 Proxy est un proxy qui permet une connexion fiable entre les ondule
    - Allez dans **Supervisor** → **Add-on Store**
    - Cliquez sur le menu (⋮) en haut à droite
    - Sélectionnez **Repositories**
-   - Ajoutez cette URL : `https://github.com/votre-username/tsun-gen3-proxy-addon`
+   - Ajoutez cette URL : `https://github.com/gambadou/tsun-gen3-proxy-addon`
 
 2. Trouvez l'add-on "TSUN Gen3 Proxy" et cliquez sur **Install**
 
